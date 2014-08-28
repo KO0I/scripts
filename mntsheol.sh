@@ -12,12 +12,15 @@ read -s pass
 #mount -t cifs //sheol.colorado.edu/Hive /mnt/sheol/hive/ -o ,domain=ad,username=$user,password=$pass
 
 ###Dist
+mkdir -p /mnt/sheol/dist
 mount -t cifs //sheol.colorado.edu/dist /mnt/sheol/dist/ -o domain=ad,username=$user,password=$pass
 
 ###Loadsets
+mkdir /mnt/sheol/loadsets
 mount -t cifs //sheol.colorado.edu/loadsets /mnt/sheol/loadsets/ -o domain=ad,username=$user,password=$pass
 
 ###backups
+mkdir /mnt/sheol/backups
 mount -t cifs //sheol.colorado.edu/backups /mnt/sheol/backups -o domain=ad,username=$user,password=$pass
 
 ##Mount Sharepoints from brain: 
