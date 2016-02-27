@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #Unmounting CU-Boulder shares
 
 umount /mnt/sheol/{dist,loadsets,backups}

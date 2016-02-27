@@ -1,6 +1,9 @@
 #!/bin/bash
 #run ONLY if the drives are in their normal order
 umount /home/patrick/win7 
+# Giant swap disable
+swapoff /dev/sdb3
+swapon /dev/sda2
 scsiadd -p
 read -r -p "Please review the above output. scsi0 should be associated with a
 TOSHIBA drive. The loud disk is a Seagate ST950042AS. Do you want to
