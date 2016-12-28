@@ -1,6 +1,6 @@
 # Please run this script as an administrative user
 # Check if backup disk is mounted
-backupdir=$(/media/Linux\ Backups/backups)
+#backupdir=$(/media/Linux\ Backups/backups)
 #if [ -d /media/Linux\ Backups/backups ]; then
 if [ -d /media/Desktop\ Backup/patrick/backups ]; then
   filename=$HOST$(LC_ALL=C date +"%m_%d_%y")
@@ -30,7 +30,7 @@ if [ -d /media/Desktop\ Backup/patrick/backups ]; then
   
   if [ -d /media/Desktop\ Backup/patrick/backups/$filename ]; then
     echo "Creating backup directory" $filename " on Desktop Backup"
-    rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /media/Desktop\ Backup/patrick/backups/$filename 
+    rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","*.git","/home/patrick/.cache"} / /media/Desktop\ Backup/patrick/backups/$filename 
     echo "backing up a list of all installed packages to pkglist.txt"
     pacman -Qqen > /media/Desktop\ Backup/patrick/backups/$filename/pkglist.txt
   else

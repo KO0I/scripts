@@ -1,0 +1,49 @@
+#!/bin/sh
+# Write/remove a task to do later.
+# 1. Additions: Sort the tasks when they are shown, but keep the order in the
+#     todo file
+# 2. Added "completed items" file that shows what's been done
+# IDEAS:
+#   Show "date added" and "date completed" tabs
+#   Have common header so that when editing the files directly, it is a little
+#     easier to read
+SB="#996699"
+SB2="#996600"
+SF="#ccc"
+NB="#111"
+NF="#ccc"
+#FN="-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-*"
+FN="terminus-18"
+
+
+TODOFILE=~/.todo
+COMPFILE=~/.completed
+HEIGHT=$(cat $TODOFILE | wc -l)
+PROMPT="Add/del a task"
+
+ACTION="cat $TODOFILE | sort | dmenu -b -fn $FN -l '$HEIGHT' -nb '$NB' -nf '$NF' -sb '$SB' -sf '$SF' -p '$PROMPT:' "
+CMD=$(eval $ACTION)
+while [ -n "$CMD" ]; do
+	grep -q "^$CMD" $TODOFILE
+	if [ $? = 0 ]; then
+    cp $COMPFILE /tmp/completed
+		grep "^$CMD" $TODOFILE >> /tmp/completed
+		grep -v "^$CMD" $TODOFILE > /tmp/todo
+    #cat /tmp/todo | sort > $TODOFILE
+    #rm /tmp/todo
+		mv /tmp/todo $TODOFILE
+		mv /tmp/completed $COMPFILE
+        HEIGHT=$(($HEIGHT-1))
+        ACTION="cat $TODOFILE | sort | dmenu -b -fn $FN -l '$HEIGHT' -nb '$NB' -nf '$NF' -sb
+        '$SB' -sf '$SF' -p '$PROMPT:' "
+	else
+		echo "$CMD" >> $TODOFILE
+        HEIGHT=$(($HEIGHT+1))
+        ACTION="cat $TODOFILE | sort | dmenu -b -fn $FN -l '$HEIGHT' -nb '$NB' -nf '$NF' -sb
+        '$SB' -sf '$SF' -p '$PROMPT:' "
+	fi
+	
+	CMD=$(eval $ACTION)
+
+done
+exit 0
