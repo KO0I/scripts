@@ -7,10 +7,10 @@
 #   Show "date added" and "date completed" tabs
 #   Have common header so that when editing the files directly, it is a little
 #     easier to read
-SB="#996699"
+SB="#bf585e"
 SB2="#996600"
 SF="#ccc"
-NB="#111"
+NB="#2c3c42"
 NF="#ccc"
 #FN="-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-*"
 FN="terminus-18"

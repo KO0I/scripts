@@ -1,63 +1,64 @@
 #!/bin/bash
 
 #set Statusbar
-while true; do
+#while $RUN_STAT; do
   #This section is for displaying the state of the battery
   # For Thinkpad X250; has two batteries
   # When a battery is exhausted, it is listed as unknown, so when it is dead,
   # do not show it's charge
-  plugged2=$(LC_ALL=C acpi -b | awk 'FNR == 2 {print $3}')
+  plugged1=$(LC_ALL=C acpi -b | awk 'FNR == 1 {print $3}' | sed s/.$//)
+  plugged2=$(LC_ALL=C acpi -b | awk 'FNR == 2 {print $3}' | sed s/.$//)
   #b1=$(LC_ALL=C acpi -b | grep 'Battery 0'| awk '{print $4}' | sed s/..$//)
-  b1=$(LC_ALL=C acpi -b | grep 'Battery 0'| awk '{print $4}')
-  b2=$(LC_ALL=C acpi -b | grep 'Battery 1'| cut -d " " -f 4 | sed s/.$//)
+  b1=$(LC_ALL=C acpi -b | grep 'Battery 0'| awk '{print $4}' | sed s/,//)
+  b2=$(LC_ALL=C acpi -b | grep 'Battery 1'| awk '{print $4}' | sed s/,//)
 
-  case $plugged2 in
-    Discharging*)
-    b2="/$b2--"
-    ;;
-    Unknown*)
-    b2=""
-    b1="$b1--(!)"
-    ;;
-    *)
-    b2="/$b2++"
-    ;; 
-  esac
+  raw_bright=$(cat /sys/class/backlight/intel_backlight/brightness);
+  pct_bright=$(bc -l <<< $raw_bright/852*100 | sed s/..................$//)
+  pct_bright=$(echo "$pct_bright%")
+  #b2=$(LC_ALL=C acpi -b | grep 'Battery 1'| cut -d " " -f 4 | sed s/.$//)
+  
+# default display is both batteries as bat1/bat2
+batt_msg="$b1/$b2"
+  
+#echo $b1
+#echo $b2
+#echo $plugged1
+#echo $plugged2
+
+# Show if the laptop is plugged or not
+
+# Alert user if the battery is full or empty. If bat2 is empty, but bat1 is
+# still ok, then only show the status of the working battery
+if [ $plugged1 == 'Unknown' ] && [ $plugged2 == 'Unknown' ]; then
+  batt_msg="<EMPTY>"
+elif [ $plugged1 != 'Unknown' ] && [ $plugged2 == 'Unknown' ]; then
+  batt_msg="$b1"
+elif [ $plugged1 == 'Full' ] || ([ $plugged2 != 'Full' ] && [\
+  $plugged2 != 'Unknown' ]); then
+  batt_msg="$b1/$b2"
+elif [ $plugged1 == 'Full' ] || [ $plugged1 == 'Full' ]; then
+  batt_msg="<FULL>"
+else batt_msg="error"
+fi
+
+if [ $plugged1 == 'Charging' ] || [ $plugged2 == 'Charging' ] 
+then 
+  batt_msg="$batt_msg++" 
+fi
+if [ $plugged1 == 'Discharging' ] || [ $plugged2 == 'Discharging' ] 
+then
+  batt_msg="$batt_msg--"
+fi
 
 ldate=$(date +%a\ %m.%d.%y)
+lweek=$(date +%W)
 ltime=$(date +%T)
-#lhour=$(date +%r | awk '{print $1}' | sed 's/.//3g')
-#lface="🕐";
 
-#case $lhour in
-#  01)
-#  ;; 
-#  02)
-#  ;; 
-#  03)
-#  ;; 
-#  04)
-#  ;; 
-#  05)
-#  ;; 
-#  06)
-#  ;; 
-#  07)
-#  ;; 
-#  08)
-#  ;; 
-#  09)
-#  ;; 
-#  10)
-#  ;; 
-#  11)
-#  ;; 
-#  12)
-#  ;; 
-#esac
+#g="::"
+g="•"
 
-#xsetroot -name "🔋 $b1/$b2 ::📅  $ldate ::$lface $ltime"
-xsetroot -name "$b1$b2 ::  $ldate :: $ltime"
+xsetroot -name "bri $pct_bright $g pow $batt_msg $g  $ldate $g week $lweek $g $ltime"
 
-sleep 5
-done &
+#sleep 5
+#done &
+
