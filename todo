@@ -7,13 +7,16 @@
 #   Show "date added" and "date completed" tabs
 #   Have common header so that when editing the files directly, it is a little
 #     easier to read
-SB="#bf585e"
+SB="#bf585e" # Nice red
+#SB="#4b2d40" 
 SB2="#996600"
 SF="#ccc"
-NB="#2c3c42"
+NB="#11101c"
 NF="#ccc"
 #FN="-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-*"
-FN="terminus-18"
+#FN="terminus-18"
+FN="Terminus\ \(TTF\)"
+#FN="TerminusTTF"
 
 
 TODOFILE=~/.todo

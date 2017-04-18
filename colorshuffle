@@ -1,0 +1,53 @@
+#!/bin/sh
+
+ROLL=$((RANDOM%7))
+
+TRNS=100 # opaque
+#CRS=#1DB954
+#CRS=#EE4488
+CRS=#CCBBFF
+
+echo $ROLL
+case $ROLL in 
+  0)
+   #BG=\#0f0101
+   BG=#192022
+   ;;
+  1)
+   #BG=\#010f01
+   BG=#1e3130
+   ;;
+  2)
+   #BG=rgba:2222/2222/4444/$TRNS
+   #BG=\#01010f
+   BG=#2d4050
+   ;;
+  3)
+   #BG=rgba:3333/3333/1111/$TRNS
+   #BG=\#080801
+   BG=#1e212f
+   ;;
+  4)
+   #BG=rgba:1111/3333/3333/$TRNS
+   #BG=\#080108
+   BG=#352a2a
+   ;;
+  5)
+   #BG=rgba:2222/4444/2222/$TRNS
+   #BG=\#010808
+   BG=#3a303a
+   ;;
+  6)
+   BG=\#111012
+   ;;
+  *)
+   #BG=rgba:2222/2222/2222/$TRNS
+   BG=\#050506
+   ;;
+ esac
+
+ #urxvt -bg [$TRNS]$BG
+ #xterm -bg $BG -fa xft:Terminus:size=8:antialias=true
+ #xterm -bg $BG -fa xft:Terminus:size=10:antialias=true -cr $CRS
+ xterm -bg $BG -fa 'Terminus (TTF):size=12:antialias=false' -cr $CRS
+ #export BG=rgba:2222/2222/2222/FFFF

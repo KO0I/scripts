@@ -13,7 +13,7 @@ for FGs in '    m' '   1m' '  30m' '1;30m' '  31m' '1;31m' '  32m' \
     #echo -en " $FGs \033[$FG  $T  "
     for BG in 0m 40m 41m 42m 43m 44m 45m 46m 47m;
       do 
-      echo -e "\033[$FG\033[$BG $T  \033[0m";
+      echo -e "\033[$FG\033[$BG $T, bg:`echo $BG`, fg:`echo $FG`  \033[0m";
       xsetroot -name "\033[$FG\033[$BG $T  \033[0m"
       #echo -e "\033[$BG $T  \033[0m";
       sleep 0.1
