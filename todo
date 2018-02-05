@@ -15,7 +15,10 @@ NB="#11101c"
 NF="#ccc"
 #FN="-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-*"
 #FN="terminus-18"
-FN="Terminus\ \(TTF\)"
+#FN="Terminus\ \(TTF\)"
+#FN="xos4 terminus 10:size=10"
+#FN="-xos4-terminus-medium-r-*-*-10-* "
+FN="xos4 Terminus:size=8"
 #FN="TerminusTTF"
 
 
@@ -24,7 +27,9 @@ COMPFILE=~/.completed
 HEIGHT=$(cat $TODOFILE | wc -l)
 PROMPT="Add/del a task"
 
-ACTION="cat $TODOFILE | sort | dmenu -b -fn $FN -l '$HEIGHT' -nb '$NB' -nf '$NF' -sb '$SB' -sf '$SF' -p '$PROMPT:' "
+#DMENU_ACTION="dmenu -b -fn '$FN' -l '$HEIGHT' -nb '$NB' -nf '$NF' -sb '$SB' -sf '$SF' -p '$PROMPT:' < ~/.cache/dmenu_run" 
+ACTION="cat $TODOFILE | sort | dmenu -b -fn '$FN' -l '$HEIGHT' -nb '$NB' -nf '$NF' -sb '$SB' -sf '$SF' -p '$PROMPT:'"
+#echo $ACTION
 CMD=$(eval $ACTION)
 while [ -n "$CMD" ]; do
 	grep -q "^$CMD" $TODOFILE
