@@ -126,8 +126,8 @@ done
 # map roll to a color background
 case $ROLL in 
   0)
-   #BG=\#141720
-   BG=\#2A2807
+   BG=\#141720
+   #BG=\#2A2807
    ;;
   1)
    #BG=\#1E1210
@@ -144,8 +144,8 @@ case $ROLL in
    ;;
   5)
    #BG=rgba:2222/4444/2222/$TRNS
-   BG=\#373210
-   #BG=\#3a323a
+   #BG=\#373210
+   BG=\#3a323a
    ;;
   6)
    #
