@@ -1,6 +1,6 @@
 #!/bin/bash
 #run ONLY if the drives are in their normal order
-umount /home/patrick/win7 
+umount /home/amber/win7 
 # Giant swap disable
 swapoff /dev/sdb3
 swapon /dev/sda2

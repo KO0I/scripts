@@ -1,6 +1,6 @@
 #!/bin/bash
 #  Snap picture of current setup
-scrot 'background.png' -e 'mv $f /home/patrick/dotfiles/'
+scrot 'background.png' -e 'mv $f /home/amber/dotfiles/'
 #  Blur it a little with imagemagick
 #convert /home/$USER/dotfiles/background.png -channel RGBA -blur 0x8 /home/$USER/dotfiles/background.png
 #  Blur and store

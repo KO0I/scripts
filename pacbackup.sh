@@ -4,4 +4,4 @@
   filename=$(LC_ALL=C date)
   echo "Creating backup of package list" $filename
 
-  pacman -Qqen > /home/patrick/dotfiles/packages_backup
+  pacman -Qqen > /home/amber/dotfiles/packages_backup

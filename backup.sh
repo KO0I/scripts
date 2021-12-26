@@ -2,11 +2,11 @@
 # Check if backup disk is mounted
 #backupdir=$(/media/Linux\ Backups/backups)
 #if [ -d /media/Linux\ Backups/backups ]; then
-if [ -d /media/Desktop\ Backup/patrick/backups ]; then
+if [ -d /media/Desktop\ Backup/amber/backups ]; then
   filename=$HOST$(LC_ALL=C date +"%m_%d_%y")
   echo "Creating backup directory" $filename
   #mkdir /media/Linux\ Backups/backups/$filename
-  mkdir /media/Desktop\ Backup/patrick/backups/$filename
+  mkdir /media/Desktop\ Backup/amber/backups/$filename
   #if [ -d /media/Linux\ Backups/backups/$filename ]; then
   #  echo "done!"
   #  # begin backing up every important directory
@@ -28,11 +28,11 @@ if [ -d /media/Desktop\ Backup/patrick/backups ]; then
   # USING RSYNC INSTEAD
 #  rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found"} / /media/Linux\ Backups/backups/$filename 
   
-  if [ -d /media/Desktop\ Backup/patrick/backups/$filename ]; then
+  if [ -d /media/Desktop\ Backup/amber/backups/$filename ]; then
     echo "Creating backup directory" $filename " on Desktop Backup"
-    rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","*.git","/home/patrick/.cache"} / /media/Desktop\ Backup/patrick/backups/$filename 
+    rsync -aAXv --exclude={"/dev/*","/proc/*","/sys/*","/tmp/*","/run/*","/mnt/*","/media/*","/lost+found","*.git","/home/amber/.cache"} / /media/Desktop\ Backup/amber/backups/$filename 
     echo "backing up a list of all installed packages to pkglist.txt"
-    pacman -Qqen > /media/Desktop\ Backup/patrick/backups/$filename/pkglist.txt
+    pacman -Qqen > /media/Desktop\ Backup/amber/backups/$filename/pkglist.txt
   else
     echo "Could not create the directory"
   fi

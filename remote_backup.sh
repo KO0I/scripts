@@ -1,6 +1,6 @@
 # Please run this script as an administrative user
 # Check if backup disk is mounted
-ssh patrick@sandstone.dlinkddns.com
+ssh amber@sandstone.dlinkddns.com
 backupdir=$(/media/Linux\ Backups/backups)
 if [ -d /media/Linux\ Backups/backups ]; then
 #if [ -d /media/Linux Backups/backups ]; then
