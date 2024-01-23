@@ -1,0 +1,118 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f30f0736c9b, pid=439735, tid=449178
+#
+# JRE version: OpenJDK Runtime Environment (14.0.1+7) (build 14.0.1+7)
+# Java VM: OpenJDK 64-Bit Server VM (14.0.1+7, mixed mode, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libbrowsercore_ipc.so+0x178c9b]  Java_com_teamdev_jxbrowser_internal_rpc_transport_IpcLibrary_closeConnection+0x1b
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h" (or dumping to /home/patrick/scripts/core.439735)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Djava.library.path=/usr/lib/tastyworks/app:/usr/lib/tastyworks/bin -Djava.launcher.path=/usr/lib/tastyworks/bin -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -XX:-OmitStackTraceInFastThrow -Drx.scheduler.max-computation-threads=2 -Ddxscheme.wide=true com.dough.desktop.launcher.DesktopLauncher
+
+Host: Intel(R) Core(TM) i5-5200U CPU @ 2.20GHz, 4 cores, 15G, Arch Linux
+Time: Fri Jun 26 13:16:26 2020 MDT elapsed time: 157 seconds (0d 0h 2m 37s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00007f313046a000):  JavaThread "Socket Connection Checker: 0" [_thread_in_native, id=449178, stack(0x00007f30f009d000,0x00007f30f019e000)]
+
+Stack: [0x00007f30f009d000,0x00007f30f019e000],  sp=0x00007f30f019c770,  free space=1021k
+Native frames: (J=compiled Java code, A=aot compiled Java code, j=interpreted, Vv=VM code, C=native code)
+C  [libbrowsercore_ipc.so+0x178c9b]  Java_com_teamdev_jxbrowser_internal_rpc_transport_IpcLibrary_closeConnection+0x1b
+j  com.teamdev.jxbrowser.internal.rpc.transport.IpcLibrary.closeConnection(J)V+0
+j  com.teamdev.jxbrowser.internal.rpc.transport.SharedMemory.close()V+16
+j  com.teamdev.jxbrowser.internal.rpc.transport.SharedMemoryChannel.close()V+4
+j  com.teamdev.jxbrowser.internal.rpc.transport.SharedMemoryConnection.close()V+12
+j  com.teamdev.jxbrowser.internal.rpc.transport.ConnectionChecker.run()V+124
+j  java.lang.Thread.run()V+11 java.base@14.0.1
+v  ~StubRoutines::call_stub
+V  [libjvm.so+0x7b875c]
+V  [libjvm.so+0x7b9fbc]
+V  [libjvm.so+0x8710ff]
+V  [libjvm.so+0xdd5095]
+V  [libjvm.so+0xdda09e]
+V  [libjvm.so+0xb8f6ca]
+
+Java frames: (J=compiled Java code, j=interpreted, Vv=VM code)
+j  com.teamdev.jxbrowser.internal.rpc.transport.IpcLibrary.closeConnection(J)V+0
+j  com.teamdev.jxbrowser.internal.rpc.transport.SharedMemory.close()V+16
+j  com.teamdev.jxbrowser.internal.rpc.transport.SharedMemoryChannel.close()V+4
+j  com.teamdev.jxbrowser.internal.rpc.transport.SharedMemoryConnection.close()V+12
+j  com.teamdev.jxbrowser.internal.rpc.transport.ConnectionChecker.run()V+124
+j  java.lang.Thread.run()V+11 java.base@14.0.1
+v  ~StubRoutines::call_stub
+
+siginfo: si_signo: 11 (SIGSEGV), si_code: 1 (SEGV_MAPERR), si_addr: 0x0000000000000000
+
+Register to memory mapping:
+
+RAX=0x00007f30f0736c80: Java_com_teamdev_jxbrowser_internal_rpc_transport_IpcLibrary_closeConnection+0x0000000000000000 in /tmp/JxBrowser/7.5/libbrowsercore_ipc.so at 0x00007f30f05be000
+RBX=0x0000000000000001 is an unknown value
+RCX=0x0000000000000003 is an unknown value
+RDX=0x0000000000000001 is an unknown value
+RSP=0x00007f30f019c770 is pointing into the stack for thread: 0x00007f313046a000
+RBP=0x00007f30f019c7a0 is pointing into the stack for thread: 0x00007f313046a000
+RSI=0x00007f30f019c840 is pointing into the stack for thread: 0x00007f313046a000
+RDI=0x00007f313046a310 points into unknown readable memory: 20 42 fc 8d 31 7f 00 00
+R8 =0x00007f3130469610 points into unknown readable memory: 28 68 13 5f 31 7f 00 00
+R9 =0x0000000000000004 is an unknown value
+R10=0x00007f3170594581 is at code_begin+897 in an Interpreter codelet
+method entry point (kind = native)  [0x00007f3170594200, 0x00007f3170594b80]  2432 bytes
+R11=0x0000000000000101 is an unknown value
+R12=0x0 is NULL
+R13={method} {0x00007f30f0e99b10} 'closeConnection' '(J)V' in 'com/teamdev/jxbrowser/internal/rpc/transport/IpcLibrary'
+R14=0x00007f30f019c840 is pointing into the stack for thread: 0x00007f313046a000
+R15=0x00007f313046a310 points into unknown readable memory: 20 42 fc 8d 31 7f 00 00
+
+
+Registers:
+RAX=0x00007f30f0736c80, RBX=0x0000000000000001, RCX=0x0000000000000003, RDX=0x0000000000000001
+RSP=0x00007f30f019c770, RBP=0x00007f30f019c7a0, RSI=0x00007f30f019c840, RDI=0x00007f313046a310
+R8 =0x00007f3130469610, R9 =0x0000000000000004, R10=0x00007f3170594581, R11=0x0000000000000101
+R12=0x0000000000000000, R13=0x00007f30f0e99b10, R14=0x00007f30f019c840, R15=0x00007f313046a310
+RIP=0x00007f30f0736c9b, EFLAGS=0x0000000000010287, CSGSFS=0x002b000000000033, ERR=0x0000000000000004
+  TRAPNO=0x000000000000000e
+
+Top of Stack: (sp=0x00007f30f019c770)
+0x00007f30f019c770:   00007f30f0736c80 00007f30f0e99b10
+0x00007f30f019c780:   0000000000000000 00007f30f0e99b10
+0x00007f30f019c790:   00007f30f019c840 00007f313046a000
+0x00007f30f019c7a0:   00007f30f019c810 00007f31705945b0 
+
+Instructions: (pc=0x00007f30f0736c9b)
+0x00007f30f0736b9b:   c0 01 74 09 48 8b 7d d0 e8 d8 14 25 00 48 c7 c0
+0x00007f30f0736bab:   ff ff ff ff f0 49 0f c1 04 24 48 85 c0 75 11 48
+0x00007f30f0736bbb:   8b 03 48 89 df ff 50 10 48 89 df e8 a5 55 03 00
+0x00007f30f0736bcb:   4c 89 f0 48 83 c4 58 5b 41 5c 41 5d 41 5e 41 5f
+0x00007f30f0736bdb:   5d c3 48 8b 03 48 89 df ff 50 10 48 89 df e8 82
+0x00007f30f0736beb:   55 03 00 f6 45 c0 01 75 ab eb b2 48 8d 7d c0 e8
+0x00007f30f0736bfb:   d1 5a 03 00 eb 48 49 89 c7 48 c7 c0 ff ff ff ff
+0x00007f30f0736c0b:   f0 49 0f c1 04 24 48 85 c0 75 20 4c 8b 75 b8 49
+0x00007f30f0736c1b:   8b 06 4c 89 f7 ff 50 10 4c 89 f7 e8 45 55 03 00
+0x00007f30f0736c2b:   f6 45 c0 01 75 0b eb 19 49 89 c7 f6 45 c0 01 74
+0x00007f30f0736c3b:   10 48 8b 7d d0 e8 3b 14 25 00 eb 05 eb 00 49 89
+0x00007f30f0736c4b:   c7 48 c7 c0 ff ff ff ff 48 8b 4d a8 f0 48 0f c1
+0x00007f30f0736c5b:   01 48 85 c0 75 15 48 8b 5d b8 48 8b 03 48 89 df
+0x00007f30f0736c6b:   ff 50 10 48 89 df e8 fa 54 03 00 4c 89 ff e8 f2
+0x00007f30f0736c7b:   13 25 00 cc cc 55 48 89 e5 41 57 41 56 41 55 41
+0x00007f30f0736c8b:   54 53 50 48 89 d3 49 89 ff 4c 8b 25 8d f3 27 00
+0x00007f30f0736c9b:   49 8b 04 24 4c 89 e7 ff 50 10 48 8b 0d 6c f3 27
+0x00007f30f0736cab:   00 48 85 c9 74 58 48 8d 05 60 f3 27 00 0f 1f 84
+0x00007f30f0736cbb:   00 00 00 00 00 31 d2 48 39 59 20 0f 9c c2 48 0f
+0x00007f30f0736ccb:   4d c1 48 8b 0c d1 48 85 c9 75 ea 48 8d 0d 3b f3
+0x00007f30f0736cdb:   27 00 48 39 c8 74 27 45 31 f6 48 39 58 20 41 bd
+0x00007f30f0736ceb:   00 00 00 00 7f 1e 4c 8b 70 28 4c 8b 68 30 4d 85
+0x00007f30f0736cfb:   ed 74 0e f0 49 81 45 08 01 00 00 00 eb 06 45 31
+0x00007f30f0736d0b:   f6 45 31 ed 49 8b 04 24 4c 89 e7 ff 50 18 4d 85
+0x00007f30f0736d1b:   f6 74 

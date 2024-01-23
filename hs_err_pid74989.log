@@ -1,0 +1,23 @@
+#
+# A fatal error has been detected by the Java Runtime Environment:
+#
+#  SIGSEGV (0xb) at pc=0x00007f3e3af80c26, pid=74989, tid=76358
+#
+# JRE version: OpenJDK Runtime Environment (14.0.2+12) (build 14.0.2+12)
+# Java VM: OpenJDK 64-Bit Server VM (14.0.2+12, mixed mode, tiered, compressed oops, g1 gc, linux-amd64)
+# Problematic frame:
+# C  [libc.so.6+0x3ec26]  __run_exit_handlers+0xc6
+#
+# Core dump will be written. Default location: Core dumps may be processed with "/usr/lib/systemd/systemd-coredump %P %u %g %s %t %c %h" (or dumping to /home/patrick/scripts/core.74989)
+#
+# If you would like to submit a bug report, please visit:
+#   https://bugreport.java.com/bugreport/crash.jsp
+# The crash happened outside the Java Virtual Machine in native code.
+# See problematic frame for where to report the bug.
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Djava.library.path=/usr/lib/tastyworks/app:/usr/lib/tastyworks/bin -Djava.launcher.path=/usr/lib/tastyworks/bin -Xmx1G -XX:+UseG1GC -XX:+UseStringDeduplication -XX:-OmitStackTraceInFastThrow -Drx.scheduler.max-computation-threads=2 -Ddxscheme.wide=true com.dough.desktop.launcher.DesktopLauncher
+
+Host: 

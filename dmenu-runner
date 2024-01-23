@@ -15,8 +15,8 @@ NB="#11101c"
 NF="#ccc"
 #FN="-*-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-iso10646-*"
 #FN="terminus-18"
-FN="Terminus\ \(TTF\)"
-#FN="TerminusTTF"
+#FN="Terminus\ \(TTF\)"
+FN="TerminusTTF"
 
 
 TODOFILE=~/.todo
