@@ -1,3 +1,3 @@
 while true; do
-  xsetroot -name "`date -I` `acpi -b | grep Battery\ 0`" 
+  xsetroot -name "`date -I` `./check_battery.zsh`" 
 done
