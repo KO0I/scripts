@@ -9,7 +9,7 @@
 # Once every color is picked, re-set the file contents
 
 
-f=/home/$USER/colorshuffle.log
+f="$HOME/colorshuffle.log"
 colors_picked=0;
 
 BG0=false
@@ -96,7 +96,8 @@ fi
 #echo "random found pre: $randomize_finished"
 while [ !${randomize_finished} ]
 do
-  ROLL=$((RANDOM%NUM_COLORS))
+  ROLL=$(od -An -N2 -tu2 /dev/urandom)
+  ROLL=$((ROLL%NUM_COLORS))
   #echo "Roll $ROLL"
   if [ "$BG0" = false ]; then if [ "$ROLL" -eq 0 ]; then randomize_finished=true; fi fi
   if [ "$BG1" = false ]; then if [ "$ROLL" -eq 1 ]; then randomize_finished=true; fi; fi
@@ -199,6 +200,7 @@ fi
 
 # xterm -bg $BG -fn '-xos4-terminus-medium-*-normal-*-14-120-72-72-c-80-iso10646-1' -cr $CRS;
  #xterm -bg $BG -fn '-xos4-terminus-medium-*-normal-*-14-140-72-72-c-80-iso10646-1' -cr $CRS;
- xterm -bg $BG -fn '-xos4-terminus-medium-*-normal-*-*-180-*-*-c-*-iso10646-1' -cr $CRS;
+ #xterm -bg $BG -fn '-xos4-terminus-medium-*-normal-*-*-180-*-*-c-*-iso10646-1' -cr $CRS;
+exec kitty --override background="$BG" --override cursor="$CRS"
+# xterm -bg $BG -fn '-xos4-terminus-medium-*-normal-*-*-180-*-*-c-*-iso10646-1' -cr $CRS;
  #export BG=rgba:2222/2222/2222/FFFF
-

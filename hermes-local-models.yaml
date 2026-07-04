@@ -1,0 +1,46 @@
+# Local Hermes model profiles for llama.cpp OpenAI-compatible server.
+# Copy this file to nepthys and adjust model paths to files that exist there.
+default: hermes36b_q4
+
+models:
+  supergemma26b:
+    label: SuperGemma 26B Q4_K_M
+    model: /home/amber/models/supergemma4-26b-uncensored-gguf-v2/supergemma4-26b-uncensored-fast-v2-Q4_K_M.gguf
+    hermes_model_name: supergemma4-26b-uncensored-Q4_K_M
+    port: 8080
+    context: 65536
+    ngl: 20
+    host: 127.0.0.1
+    extra_args:
+      - --no-mmap
+
+  hermes36b_q4:
+    label: Hermes 4.3 36B Q4_K_M
+    model: /home/amber/models/Hermes-4.3-36B-GGUF/hermes-4_3_36b-Q4_K_M.gguf
+    hermes_model_name: hermes-4_3_36b-Q4_K_M
+    port: 8080
+    context: 65536
+    ngl: 20
+    host: 127.0.0.1
+    extra_args: []
+
+  coder14b:
+    label: Qwen 3.5 27B OpenSCAD Q4_K_M
+    model: /home/amber/models/Qwen3.5-27B-OpenSCAD-Instruct/Qwen3.5-27B.Q4_K_M.gguf
+    hermes_model_name: qwen3.5-27b-openscad-Q4_K_M
+    port: 8080
+    context: 65536
+    ngl: 19
+    host: 127.0.0.1
+    extra_args: []
+
+
+  smallfast:
+    label: Hermes 4.3 36B Q3_K_M
+    model: /home/amber/models/Hermes-4.3-36B-GGUF/hermes-4_3_36b-Q3_K_M.gguf
+    hermes_model_name: hermes-4_3_36b-Q3_K_M
+    port: 8080
+    context: 32768
+    ngl: 999
+    host: 127.0.0.1
+    extra_args: []
